@@ -34,7 +34,7 @@ class FBMessenger extends Adapter
 
         @autoHear = process.env['FB_AUTOHEAR'] is 'true'
 
-        @apiURL = 'FB_SIMULATOR'
+        @apiURL = process.env['FB_SIMULATOR']
         @pageURL = @apiURL + '/'+ @page_id
         @messageEndpoint = @pageURL + '/messages?access_token=' + @token
         @subscriptionEndpoint = @pageURL + '/subscribed_apps?access_token=' + @token
