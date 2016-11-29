@@ -33,10 +33,11 @@ class FBMessenger extends Adapter
             @sendImages = _sendImages is 'true'
 
         @autoHear = process.env['FB_AUTOHEAR'] is 'true'
-
-        @apiURL = process.env['FB_SIMULATOR']
+        @apiURL = 'https://graph.facebook.com/v2.6'
+        @serverURL = process.env['FB_SIMULATOR']
         @pageURL = @apiURL + '/'+ @page_id
-        @messageEndpoint = @pageURL + '/messages?access_token=' + @token
+        @serverPath = @serverURL + '/'+ @page_id
+        @messageEndpoint = @pageURL2 + '/messages?access_token=' + @token
         @subscriptionEndpoint = @pageURL + '/subscribed_apps?access_token=' + @token
         @appAccessTokenEndpoint = 'https://graph.facebook.com/oauth/access_token?client_id=' + @app_id + '&client_secret=' + @app_secret + '&grant_type=client_credentials'
         @setWebhookEndpoint = @pageURL + '/subscriptions'
@@ -77,7 +78,7 @@ class FBMessenger extends Adapter
         self = @
 
         data = JSON.stringify(fbData)
-
+        self.robot.logger.error @messageEndpoint,'ppppppppppppppppppppppppppppp'
         @robot.http(@messageEndpoint)
             .query({access_token:self.token})
             .header('Content-Type', 'application/json')
