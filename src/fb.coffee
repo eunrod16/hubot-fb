@@ -37,7 +37,7 @@ class FBMessenger extends Adapter
         @serverURL = process.env['FB_SIMULATOR']
         @pageURL = @apiURL + '/'+ @page_id
         @serverPath = @serverURL + '/'+ @page_id
-        @messageEndpoint = @pageURL2 + '/messages?access_token=' + @token
+        @messageEndpoint = @pageURL + '/messages?access_token=' + @token
         @subscriptionEndpoint = @pageURL + '/subscribed_apps?access_token=' + @token
         @appAccessTokenEndpoint = 'https://graph.facebook.com/oauth/access_token?client_id=' + @app_id + '&client_secret=' + @app_secret + '&grant_type=client_credentials'
         @setWebhookEndpoint = @pageURL + '/subscriptions'
